@@ -44,6 +44,7 @@
 				{/if}
 			{/each}
 		</div>
+		<span class="category">{f.category}</span>
 		<form method="POST" action="?/remove" use:enhance>
 			<input type="hidden" name="id" value={f.id} />
 			<button type="submit">Remove</button>
@@ -68,6 +69,7 @@
 				{/if}
 			{/each}
 		</div>
+		<span class="category">{s.category}</span>
 		<form method="POST" action="?/add" use:enhance>
 			<input type="hidden" name="id" value={s.id} />
 			<button type="submit">Add</button>
@@ -92,6 +94,7 @@
 				{/if}
 			{/each}
 		</div>
+		<span class="category">{s.category}</span>
 		<form method="POST" action="?/add" use:enhance>
 			<input type="hidden" name="id" value={s.id} />
 			<button type="submit">Add</button>
