@@ -5,9 +5,20 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
+	let filter = '';
+
 	$: favs = data.favourites
 		.map((f) => [...data.schedule1, ...data.schedule2].find((s) => s.id === f.id))
 		.sort((a, b) => new Date(a.scheduled).getTime() - new Date(b.scheduled).getTime());
+	$: filteredFavs = favs.filter((f) =>
+		JSON.stringify(f).toLowerCase().includes(filter.toLowerCase())
+	);
+	$: filteredStream1 = data.schedule1.filter((s) =>
+		JSON.stringify(s).toLowerCase().includes(filter.toLowerCase())
+	);
+	$: filteredStream2 = data.schedule2.filter((s) =>
+		JSON.stringify(s).toLowerCase().includes(filter.toLowerCase())
+	);
 
 	/**
 	 * @param {string} markdownLink
@@ -25,8 +36,9 @@
 	};
 </script>
 
+<input type="text" bind:value={filter} />
 <h1>Favourites</h1>
-{#each favs as f (f.id)}
+{#each filteredFavs as f (f.id)}
 	<div class="schedule-item">
 		<span>{moment(f.scheduled).format('dddd, MMMM Do HH:mm')}</span>
 		<span>{moment.utc(moment.duration(f.length, 'seconds').asMilliseconds()).format('HH:mm')}</span>
@@ -52,7 +64,7 @@
 	</div>
 {/each}
 <h1>Stream 1</h1>
-{#each data.schedule1 as s (s.id)}
+{#each filteredStream1 as s (s.id)}
 	<div class="schedule-item">
 		<span>{moment(s.scheduled).format('dddd, MMMM Do HH:mm')}</span>
 		{#if getLink(s.game)[1]}
@@ -77,7 +89,7 @@
 	</div>
 {/each}
 <h1>Stream 2</h1>
-{#each data.schedule2 as s (s.id)}
+{#each filteredStream2 as s (s.id)}
 	<div class="schedule-item">
 		<span>{moment(s.scheduled).format('dddd, MMMM Do HH:mm')}</span>
 		{#if getLink(s.game)[1]}
