@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-markdown": "^0.2.3"
+		".vercel": "link:.vercel",
+		"moment": "^2.29.4"
 	}
 }
