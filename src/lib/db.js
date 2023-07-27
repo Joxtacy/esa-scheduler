@@ -3,20 +3,7 @@ import fs from 'fs/promises';
 const DB_FILE = 'db.json';
 
 /**
- * @typedef Favourite
- * @type {object}
- * @property {string} id
- */
-
-/**
- * @typedef ScheduleItem
- * @type {object}
- * @property {string} id
- *
- */
-
-/**
- * @returns {Promise<Favourite[]>}
+ * @returns {Promise<import('$lib/types').Favourite[]>}
  */
 export const getFavourites = async () => {
 	let data = [];
@@ -37,7 +24,7 @@ export const getFavourites = async () => {
 };
 
 /**
- * @param {Favourite} favourite
+ * @param {import('$lib/types').Favourite} favourite
  */
 export const addFavourite = async (favourite) => {
 	const favourites = await getFavourites();
@@ -51,7 +38,7 @@ export const addFavourite = async (favourite) => {
 };
 
 /**
- * @param {Favourite} favourite
+ * @param {import('$lib/types').Favourite} favourite
  */
 export const removeFavourite = async (favourite) => {
 	const favourites = await getFavourites();
