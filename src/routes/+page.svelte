@@ -49,11 +49,13 @@
 		{/if}
 		<div class="players">
 			{#each f.players as p}
-				{#if getLink(p)[1]}
-					<a href={getLink(p)[1]}>{getLink(p)[0]}</a>
-				{:else}
-					<span>{getLink(p)[0]}</span>
-				{/if}
+				<div class="player">
+					{#if getLink(p)[1]}
+						<a href={getLink(p)[1]}>{getLink(p)[0]}</a>
+					{:else}
+						<span>{getLink(p)[0]}</span>
+					{/if}
+				</div>
 			{/each}
 		</div>
 		<span class="category">{f.category}</span>
@@ -74,11 +76,13 @@
 		{/if}
 		<div class="players">
 			{#each s.players as p}
-				{#if getLink(p)[1]}
-					<a href={getLink(p)[1]}>{getLink(p)[0]}</a>
-				{:else}
-					<span>{getLink(p)[0]}</span>
-				{/if}
+				<div class="player">
+					{#if getLink(p)[1]}
+						<a href={getLink(p)[1]}>{getLink(p)[0]}</a>
+					{:else}
+						<span>{getLink(p)[0]}</span>
+					{/if}
+				</div>
 			{/each}
 		</div>
 		<span class="category">{s.category}</span>
@@ -99,11 +103,13 @@
 		{/if}
 		<div class="players">
 			{#each s.players as p}
-				{#if getLink(p)[1]}
-					<a href={getLink(p)[1]}>{getLink(p)[0]}</a>
-				{:else}
-					<span>{getLink(p)[0]}</span>
-				{/if}
+				<div class="player">
+					{#if getLink(p)[1]}
+						<a href={getLink(p)[1]}>{getLink(p)[0]}</a>
+					{:else}
+						<span>{getLink(p)[0]}</span>
+					{/if}
+				</div>
 			{/each}
 		</div>
 		<span class="category">{s.category}</span>
