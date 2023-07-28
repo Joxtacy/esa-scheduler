@@ -31,7 +31,14 @@
 	};
 </script>
 
-<div class="schedule-item" transition:fade on:click={toggleOpen}>
+<div
+	class="schedule-item"
+	transition:fade
+	on:click={toggleOpen}
+	on:keypress={toggleOpen}
+	role="menuitem"
+	tabindex="0"
+>
 	<span>{moment(scheduleItem.scheduled).format('dddd, MMMM Do HH:mm')}</span>
 	<span
 		>{moment
