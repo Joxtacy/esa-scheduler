@@ -12,9 +12,16 @@ export async function load({ fetch, data }) {
 	/** @type {import('$lib/types').ScheduleResponse} */
 	const json2 = await stream2Raw.json();
 
+	const favs = data.favourites.map((favourite) =>
+		[...json1.data, ...json2.data].find((schedule) => schedule.id === favourite.id)
+	);
+	/** @type {import('$lib/types').ScheduleItem[]} */
+	const filtered = /** @type {import('$lib/types').ScheduleItem[]} */ (
+		/** @type {unknown[]} */ favs.filter((favourite) => favourite != undefined)
+	);
 	return {
 		schedule1: json1?.data ?? [],
 		schedule2: json2?.data ?? [],
-		favourites: data.favourites
+		favourites: filtered
 	};
 }

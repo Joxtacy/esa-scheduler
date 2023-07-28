@@ -8,9 +8,9 @@
 
 	let filter = '';
 
-	$: favs = data.favourites
-		.map((f) => [...data.schedule1, ...data.schedule2].find((s) => s.id === f.id))
-		.sort((a, b) => new Date(a.scheduled).getTime() - new Date(b.scheduled).getTime());
+	$: favs = data.favourites.sort(
+		(a, b) => new Date(a.scheduled).getTime() - new Date(b.scheduled).getTime()
+	);
 	$: filteredFavs = favs.filter((f) =>
 		JSON.stringify(f).toLowerCase().includes(filter.toLowerCase())
 	);
