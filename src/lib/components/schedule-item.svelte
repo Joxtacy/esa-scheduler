@@ -6,6 +6,12 @@
 	/** @type {import('$lib/types').ScheduleItem} */
 	export let scheduleItem;
 
+	let open = false;
+
+	const toggleOpen = () => {
+		open = !open;
+	};
+
 	$: gameLink = getLink(scheduleItem.game);
 	$: playerLink = getLink(scheduleItem.players[0]);
 
@@ -25,7 +31,7 @@
 	};
 </script>
 
-<div class="schedule-item" transition:fade>
+<div class="schedule-item" transition:fade on:click={toggleOpen}>
 	<span>{moment(scheduleItem.scheduled).format('dddd, MMMM Do HH:mm')}</span>
 	<span
 		>{moment
@@ -38,15 +44,26 @@
 		<span>{gameLink[0]}</span>
 	{/if}
 	<div class="players">
-		<!-- {#each scheduleItem.players as p} -->
-		<div class="player">
-			{#if playerLink[1]}
-				<a href={playerLink[1]}>{playerLink[0]}</a>
-			{:else}
-				<span>{playerLink[0]}</span>
-			{/if}
-		</div>
-		<!-- {/each} -->
+		{#if open}
+			{#each scheduleItem.players as p}
+				{@const playerLink = getLink(p)}
+				<div class="player">
+					{#if playerLink[1]}
+						<a href={playerLink[1]}>{playerLink[0]}</a>
+					{:else}
+						<span>{playerLink[0]}</span>
+					{/if}
+				</div>
+			{/each}
+		{:else}
+			<div class="player">
+				{#if playerLink[1]}
+					<a href={playerLink[1]}>{playerLink[0]}</a>
+				{:else}
+					<span>{playerLink[0]}</span>
+				{/if}
+			</div>
+		{/if}
 	</div>
 	<span class="category">{scheduleItem.category}</span>
 	<form method="POST" action="?/remove" use:enhance>
@@ -60,5 +77,8 @@
 		margin-bottom: 1rem;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	}
+	.schedule-item:hover {
+		cursor: pointer;
 	}
 </style>
