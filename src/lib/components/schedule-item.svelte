@@ -12,6 +12,7 @@
 		open = !open;
 	};
 
+	$: extraPlayers = scheduleItem.players.length - 1;
 	$: gameLink = getLink(scheduleItem.game);
 	$: playerLink = getLink(scheduleItem.players[0]);
 
@@ -65,9 +66,9 @@
 		{:else}
 			<div class="player">
 				{#if playerLink[1]}
-					<a href={playerLink[1]}>{playerLink[0]}</a>
+					<a href={playerLink[1]}>{playerLink[0]}{extraPlayers > 0 ? ` + ${extraPlayers}` : ''}</a>
 				{:else}
-					<span>{playerLink[0]}</span>
+					<span>{playerLink[0]}{extraPlayers > 0 ? ` + ${extraPlayers}` : ''}</span>
 				{/if}
 			</div>
 		{/if}
