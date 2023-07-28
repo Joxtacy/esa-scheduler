@@ -1,4 +1,5 @@
 <script>
+	import { fade } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import moment from 'moment';
 
@@ -39,7 +40,7 @@
 <input type="text" bind:value={filter} />
 <h1>Favourites</h1>
 {#each filteredFavs as f (f.id)}
-	<div class="schedule-item">
+	<div class="schedule-item" transition:fade>
 		<span>{moment(f.scheduled).format('dddd, MMMM Do HH:mm')}</span>
 		<span>{moment.utc(moment.duration(f.length, 'seconds').asMilliseconds()).format('HH:mm')}</span>
 		{#if getLink(f.game)[1]}
