@@ -26,18 +26,18 @@
 <h1>Favourites</h1>
 <div class="schedule-wrapper">
 	{#each filteredFavs as scheduleItem (scheduleItem.id)}
-		<ScheduleItem {scheduleItem} />
+		<ScheduleItem {scheduleItem} action="remove" />
 	{/each}
 </div>
 <h1>Stream 1</h1>
 <div class="schedule-wrapper">
 	{#each filteredStream1 as scheduleItem (scheduleItem.id)}
-		<ScheduleItem {scheduleItem} />
+		<ScheduleItem {scheduleItem} action="add" />
 	{/each}
 </div>
 <h1>Stream 2</h1>
 <div class="schedule-wrapper">
 	{#each filteredStream2 as scheduleItem (scheduleItem.id)}
-		<ScheduleItem {scheduleItem} />
+		<ScheduleItem {scheduleItem} action="add" />
 	{/each}
 </div>

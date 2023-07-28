@@ -6,6 +6,9 @@
 	/** @type {import('$lib/types').ScheduleItem} */
 	export let scheduleItem;
 
+	/** @type {string} */
+	export let action;
+
 	let open = false;
 
 	const toggleOpen = () => {
@@ -74,9 +77,9 @@
 		{/if}
 	</div>
 	<span class="category">{scheduleItem.category}</span>
-	<form method="POST" action="?/remove" use:enhance>
+	<form method="POST" action="?/{action}" use:enhance>
 		<input type="hidden" name="id" value={scheduleItem.id} />
-		<button type="submit">Remove</button>
+		<button type="submit" style="text-transform: capitalize;">{action}</button>
 	</form>
 </div>
 
