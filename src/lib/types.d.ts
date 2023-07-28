@@ -15,3 +15,7 @@ export type ScheduleItem = {
 	id: string;
 	options: object | null;
 };
+
+export type ScheduleResponse = {
+	data: ScheduleItem[];
+};

@@ -14,11 +14,13 @@
 	$: filteredFavs = favs.filter((f) =>
 		JSON.stringify(f).toLowerCase().includes(filter.toLowerCase())
 	);
-	$: filteredStream1 = data.schedule1.filter((s) =>
-		JSON.stringify(s).toLowerCase().includes(filter.toLowerCase())
+	$: filteredStream1 = data.schedule1.filter(
+		/** @param {import('$lib/types').ScheduleItem} s */
+		(s) => JSON.stringify(s).toLowerCase().includes(filter.toLowerCase())
 	);
-	$: filteredStream2 = data.schedule2.filter((s) =>
-		JSON.stringify(s).toLowerCase().includes(filter.toLowerCase())
+	$: filteredStream2 = data.schedule2.filter(
+		/** @param {import('$lib/types').ScheduleItem} s */
+		(s) => JSON.stringify(s).toLowerCase().includes(filter.toLowerCase())
 	);
 
 	/**

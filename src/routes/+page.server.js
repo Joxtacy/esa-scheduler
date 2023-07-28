@@ -3,7 +3,6 @@ import { addFavourite, getFavourites, removeFavourite } from '$lib/db';
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	const favourites = await getFavourites();
-	console.log('page.server load', favourites);
 	return {
 		favourites
 	};
