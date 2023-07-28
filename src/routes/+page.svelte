@@ -143,14 +143,12 @@
 <style>
 	.schedule-item {
 		margin-bottom: 1rem;
-		display: flex;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	}
 	.players {
 		display: flex;
-		margin: 0.5rem;
 	}
 	span {
-		margin: 0.5rem;
 	}
 </style>
