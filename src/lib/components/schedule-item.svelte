@@ -5,6 +5,7 @@
 	import { getLink } from '$lib/utils';
 
 	import Players from '$lib/components/players.svelte';
+	import Game from '$lib/components/game.svelte';
 
 	/** @type {import('$lib/types').ScheduleItem} */
 	export let scheduleItem;
@@ -17,8 +18,6 @@
 	const toggleOpen = () => {
 		open = !open;
 	};
-
-	$: gameLink = getLink(scheduleItem.game);
 </script>
 
 <div
@@ -38,13 +37,8 @@
 			.utc(moment.duration(scheduleItem.length, 'seconds').asMilliseconds())
 			.format('HH:mm')}</span
 	>
-	<div class="game-wrapper">
-		{#if gameLink[1]}
-			<a href={gameLink[1]}>{gameLink[0]}</a>
-		{:else}
-			<span>{gameLink[0]}</span>
-		{/if}
-	</div>
+
+	<Game game={scheduleItem.game} />
 	<Players players={scheduleItem.players} {open} />
 	<span class="category">{scheduleItem.category}</span>
 	<form method="POST" action="?/{action}" use:enhance>
