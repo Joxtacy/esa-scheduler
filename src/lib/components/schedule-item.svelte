@@ -2,7 +2,6 @@
 	import { fade } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import moment from 'moment';
-	import { getLink } from '$lib/utils';
 
 	import Players from '$lib/components/players.svelte';
 	import Game from '$lib/components/game.svelte';
