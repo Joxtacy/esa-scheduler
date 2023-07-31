@@ -4,6 +4,8 @@
 	import moment from 'moment';
 	import { getLink } from '$lib/utils';
 
+	import Players from './players.svelte';
+
 	/** @type {import('$lib/types').ScheduleItem} */
 	export let scheduleItem;
 
@@ -16,9 +18,7 @@
 		open = !open;
 	};
 
-	$: extraPlayers = scheduleItem.players.length - 1;
 	$: gameLink = getLink(scheduleItem.game);
-	$: playerLink = getLink(scheduleItem.players[0]);
 </script>
 
 <div
@@ -42,28 +42,7 @@
 			<span>{gameLink[0]}</span>
 		{/if}
 	</div>
-	<div class="players">
-		{#if open}
-			{#each scheduleItem.players as p}
-				{@const playerLink = getLink(p)}
-				<div class="player">
-					{#if playerLink[1]}
-						<a href={playerLink[1]}>{playerLink[0]}</a>
-					{:else}
-						<span>{playerLink[0]}</span>
-					{/if}
-				</div>
-			{/each}
-		{:else}
-			<div class="player">
-				{#if playerLink[1]}
-					<a href={playerLink[1]}>{playerLink[0]}{extraPlayers > 0 ? ` + ${extraPlayers}` : ''}</a>
-				{:else}
-					<span>{playerLink[0]}{extraPlayers > 0 ? ` + ${extraPlayers}` : ''}</span>
-				{/if}
-			</div>
-		{/if}
-	</div>
+	<Players players={scheduleItem.players} {open} />
 	<span class="category">{scheduleItem.category}</span>
 	<form method="POST" action="?/{action}" use:enhance>
 		<input type="hidden" name="id" value={scheduleItem.id} />
