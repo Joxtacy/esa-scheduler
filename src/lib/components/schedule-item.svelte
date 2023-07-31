@@ -4,7 +4,7 @@
 	import moment from 'moment';
 	import { getLink } from '$lib/utils';
 
-	import Players from './players.svelte';
+	import Players from '$lib/components/players.svelte';
 
 	/** @type {import('$lib/types').ScheduleItem} */
 	export let scheduleItem;
