@@ -23,6 +23,9 @@
 
 <div
 	class="schedule-item"
+	class:current={moment(scheduleItem.scheduled)
+		.add(scheduleItem.length, 'seconds')
+		.isAfter(new Date()) && moment(scheduleItem.scheduled).isBefore(new Date())}
 	transition:fade
 	on:click={toggleOpen}
 	on:keypress={toggleOpen}
@@ -58,5 +61,9 @@
 	}
 	.schedule-item:hover {
 		cursor: pointer;
+	}
+	.current {
+		background-color: #794582;
+		color: white;
 	}
 </style>
