@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { enhance } from '$app/forms';
 	import moment from 'moment';
+	import { getLink } from '$lib/utils';
 
 	/** @type {import('$lib/types').ScheduleItem} */
 	export let scheduleItem;
@@ -18,21 +19,6 @@
 	$: extraPlayers = scheduleItem.players.length - 1;
 	$: gameLink = getLink(scheduleItem.game);
 	$: playerLink = getLink(scheduleItem.players[0]);
-
-	/**
-	 * @param {string} markdownLink
-	 * @returns {Array <string|undefined>}
-	 */
-	const getLink = (markdownLink) => {
-		const regex = /\[(.*)\]\((.*)\)/;
-		if (regex.test(markdownLink)) {
-			const match = regex.exec(markdownLink);
-			if (match && match[1] && match[2]) {
-				return [match[1], match[2]];
-			}
-		}
-		return [markdownLink, undefined];
-	};
 </script>
 
 <div
