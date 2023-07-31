@@ -45,13 +45,24 @@
 		<input type="hidden" name="id" value={scheduleItem.id} />
 		<button type="submit" style="text-transform: capitalize;">{action}</button>
 	</form>
+	{#if scheduleItem.note != null}
+		<div class="note-wrapper">
+			<span class="note">
+				{scheduleItem.note}
+			</span>
+		</div>
+	{/if}
 </div>
 
 <style>
 	.schedule-item {
 		margin-bottom: 1rem;
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-columns: 1.5fr 0.5fr 2fr 1fr 1.5fr 0.5fr 0.5fr;
+		padding: 0.5rem;
+		margin: 0.5rem;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	}
 	.schedule-item:hover {
 		cursor: pointer;
