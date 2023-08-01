@@ -5,6 +5,7 @@
 
 	import Players from '$lib/components/players.svelte';
 	import Game from '$lib/components/game.svelte';
+	import Category from '$lib/components/category.svelte';
 
 	/** @type {import('$lib/types').ScheduleItem} */
 	export let scheduleItem;
@@ -39,8 +40,8 @@
 
 	<Game game={scheduleItem.game} />
 	<Players players={scheduleItem.players} {open} />
-	<span class="category">{scheduleItem.category}</span>
-	<form method="POST" action="?/{action}" use:enhance>
+	<Category category={scheduleItem.category ? scheduleItem.category : ''} />
+	<form method="POST" action="?/{action}" on:submit|stopPropagation use:enhance>
 		<input type="hidden" name="id" value={scheduleItem.id} />
 		<button type="submit" style="text-transform: capitalize;">{action}</button>
 	</form>
