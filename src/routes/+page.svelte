@@ -29,15 +29,24 @@
 		<ScheduleItem {scheduleItem} action="remove" />
 	{/each}
 </div>
-<h1>Stream 1</h1>
-<div class="schedule-wrapper">
-	{#each filteredStream1 as scheduleItem (scheduleItem.id)}
-		<ScheduleItem {scheduleItem} action="add" />
-	{/each}
+<div class="stream-wrapper">
+	<div class="schedule-wrapper">
+		<h1>Stream 1</h1>
+		{#each filteredStream1 as scheduleItem (scheduleItem.id)}
+			<ScheduleItem {scheduleItem} action="add" />
+		{/each}
+	</div>
+	<div class="schedule-wrapper">
+		<h1>Stream 2</h1>
+		{#each filteredStream2 as scheduleItem (scheduleItem.id)}
+			<ScheduleItem {scheduleItem} action="add" />
+		{/each}
+	</div>
 </div>
-<h1>Stream 2</h1>
-<div class="schedule-wrapper">
-	{#each filteredStream2 as scheduleItem (scheduleItem.id)}
-		<ScheduleItem {scheduleItem} action="add" />
-	{/each}
-</div>
+
+<style>
+	.stream-wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+</style>

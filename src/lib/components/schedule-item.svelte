@@ -56,7 +56,6 @@
 
 <style>
 	.schedule-item {
-		margin-bottom: 1rem;
 		display: grid;
 		grid-template-columns: 1.5fr 0.5fr 2fr 1fr 1.5fr 0.5fr 0.5fr;
 		padding: 0.5rem;
