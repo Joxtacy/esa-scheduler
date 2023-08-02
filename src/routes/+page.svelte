@@ -49,4 +49,9 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
+	@media screen and (orientation: portrait), (max-width: 800px) {
+		.stream-wrapper {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>
