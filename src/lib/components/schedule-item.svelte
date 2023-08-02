@@ -43,7 +43,7 @@
 	<Category category={scheduleItem.category ? scheduleItem.category : ''} />
 	<form method="POST" action="?/{action}" on:submit|stopPropagation use:enhance>
 		<input type="hidden" name="id" value={scheduleItem.id} />
-		<button type="submit" style="text-transform: capitalize;">{action}</button>
+		<button type="submit">{action}</button>
 	</form>
 	{#if scheduleItem.note != null}
 		<div class="note-wrapper">
@@ -69,5 +69,10 @@
 	.current {
 		background-color: #794582;
 		color: white;
+	}
+	button {
+		font-family: inherit;
+		font-size: inherit;
+		text-transform: uppercase;
 	}
 </style>
