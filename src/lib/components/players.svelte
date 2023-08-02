@@ -13,7 +13,7 @@
 <div class="players">
 	{#if open}
 		{#each players as player}
-			<Player {player} extraLabel={extraPlayers > 0 ? ` + ${extraPlayers}` : ''} />
+			<Player {player} />
 		{/each}
 	{:else}
 		<Player player={players[0]} extraLabel={extraPlayers > 0 ? ` + ${extraPlayers}` : ''} />
