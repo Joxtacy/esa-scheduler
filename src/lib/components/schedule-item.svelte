@@ -43,7 +43,13 @@
 	<Category category={scheduleItem.category ? scheduleItem.category : ''} />
 	<form method="POST" action="?/{action}" on:submit|stopPropagation use:enhance>
 		<input type="hidden" name="id" value={scheduleItem.id} />
-		<button type="submit">{action}</button>
+		<button type="submit" class:add={action === 'add'} class:remove={action === 'remove'}>
+			{#if action == 'add'}
+				<i class="fa-solid fa-plus" />
+			{:else}
+				<i class="fa-regular fa-trash-can" />
+			{/if}
+		</button>
 	</form>
 	{#if scheduleItem.note != null}
 		<div class="note-wrapper">
@@ -58,9 +64,9 @@
 	.schedule-item {
 		display: grid;
 		grid-template-columns: 1.5fr 0.5fr 2fr 1fr 1.5fr 0.5fr 0.5fr;
-		padding: 0.5rem;
-		margin: 0.5rem;
-		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		column-gap: 0.5rem;
+		justify-items: start;
+		align-items: center;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	}
 	.schedule-item:hover {
@@ -73,6 +79,25 @@
 	button {
 		font-family: inherit;
 		font-size: inherit;
-		text-transform: uppercase;
+		border: none;
+		background-color: unset;
+		cursor: pointer;
+	}
+
+	.add,
+	.remove {
+		transition-property: transform, color;
+		transition-duration: 0.3s;
+		transition-timing-function: ease-in-out;
+	}
+
+	.remove:hover {
+		transform: rotateZ(360deg);
+		color: red;
+	}
+
+	.add:hover {
+		transform: rotateZ(360deg);
+		color: var(--link_hover_color);
 	}
 </style>

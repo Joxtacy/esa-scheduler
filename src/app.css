@@ -1,6 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+* {
+	--link_color: #f19337;
+	--link_hover_color: #65bc7b;
+	--content_bg_color: #f9efff;
+	--content_bg_image: url('//esamarathon.com/wp-content/uploads/2020/02/background-1.png');
+	--content_bg_repeat: repeat;
+	--font-size: 16px;
+}
+
 body {
 	box-sizing: border-box;
 	font-family: 'Roboto', sans-serif;
+	font-size: var(--font-size);
+	background-color: var(--content_bg_color);
+	background-image: var(--content_bg_image);
+	background-repeat: var(--content_bg_repeat);
+}
+
+a {
+	color: var(--link_color);
+	text-decoration: none;
+	transition-property: color, background-color, border-color;
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+}
+
+a:hover {
+	color: var(--link_hover_color);
 }
