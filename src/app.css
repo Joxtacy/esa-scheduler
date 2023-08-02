@@ -3,10 +3,32 @@
 * {
 	--link_color: #f19337;
 	--link_hover_color: #65bc7b;
+	--bad_color: #da0c0c;
 	--content_bg_color: #f9efff;
 	--content_bg_image: url('//esamarathon.com/wp-content/uploads/2020/02/background-1.png');
 	--content_bg_repeat: repeat;
 	--font-size: 16px;
+}
+
+@keyframes wiggle {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	20% {
+		transform: rotateZ(15deg);
+	}
+	40% {
+		transform: rotateZ(-10deg);
+	}
+	60% {
+		transform: rotateZ(10deg);
+	}
+	80% {
+		transform: rotateZ(-10deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
 }
 
 body {

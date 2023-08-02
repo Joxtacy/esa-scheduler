@@ -84,18 +84,20 @@
 
 	.add,
 	.remove {
-		transition-property: transform, color;
+		transition-property: color;
 		transition-duration: 0.3s;
 		transition-timing-function: ease-in-out;
 	}
 
 	.remove:hover {
-		transform: rotateZ(360deg);
-		color: red;
+		animation-duration: 0.3s;
+		animation-name: wiggle;
+		color: var(--bad_color);
 	}
 
 	.add:hover {
-		transform: rotateZ(360deg);
+		animation-duration: 0.3s;
+		animation-name: wiggle;
 		color: var(--link_hover_color);
 	}
 </style>
