@@ -32,6 +32,8 @@
 		<div class="schedule-item-wrapper">
 			<ScheduleItem {scheduleItem} action="remove" />
 		</div>
+	{:else}
+		<div class="empty-list">Nothing to show... <i class="fa-regular fa-face-sad-tear" /></div>
 	{/each}
 </div>
 <div class="stream-wrapper">
@@ -41,6 +43,10 @@
 			<div class="schedule-item-wrapper">
 				<ScheduleItem {scheduleItem} action="add" />
 			</div>
+		{:else}
+			<div class="empty-list">
+				Nothing to show... <i class="fa-regular fa-face-sad-tear" />
+			</div>
 		{/each}
 	</div>
 	<div class="schedule-wrapper">
@@ -49,6 +55,8 @@
 			<div class="schedule-item-wrapper">
 				<ScheduleItem {scheduleItem} action="add" />
 			</div>
+		{:else}
+			<div class="empty-list">Nothing to show... <i class="fa-regular fa-face-sad-tear" /></div>
 		{/each}
 	</div>
 </div>
@@ -78,5 +86,8 @@
 	.search-wrapper {
 		display: flex;
 		justify-content: center;
+	}
+	.empty-list {
+		text-align: center;
 	}
 </style>
