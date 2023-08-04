@@ -39,7 +39,7 @@
 	<Game game={scheduleItem.game} />
 	<Players players={scheduleItem.players} {open} />
 	<Category category={scheduleItem.category ? scheduleItem.category : ''} />
-	<form method="POST" action="?/{action}" on:submit use:enhance>
+	<form method="POST" action="?/{action}" use:enhance>
 		<input type="hidden" name="id" value={scheduleItem.id} />
 		<button type="submit" class:add={action === 'add'} class:remove={action === 'remove'}>
 			{#if action == 'add'}
